@@ -22,3 +22,4 @@ def fill():
 
 def cleanup():
 	frappe.db.delete("Stripe Charge")
+	frappe.db.delete("Stripe Card")

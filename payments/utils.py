@@ -68,6 +68,11 @@ class StripeHelper:
 				print(f"Reached max limit of {MAX_LIMIT}. Stopping.")
 				break
 
+	@classmethod
+	def fill_everything(cls, **kwargs):
+		list = cls.stripe_object.list(limit=PAGINATION_LIMIT, **kwargs)
+		cls._fill(list.auto_paging_iter())
+
 	def _get_system_time_from_timestamp(self, timestamp):
 		utc = datetime.fromtimestamp(timestamp, tz=timezone.utc)
 		return convert_utc_to_system_timezone(utc)

@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
+from payments.stripe.doctype.stripe_card.stripe_card import StripeCard
 from payments.utils import StripeHelper, unscrub
 
 
@@ -13,6 +14,11 @@ class StripeCharge(Document, StripeHelper):
 
 	@classmethod
 	def create(cls, charge):
+		if charge.payment_method and not frappe.db.exists("Stripe Card", charge.payment_method):
+			# This is going to create more requests
+			# But, there are no way to bulk fetch PaymentMethods
+			StripeCard.fill_everything(customer=charge.customer)
+
 		doc = frappe.get_doc(
 			{
 				"doctype": "Stripe Charge",

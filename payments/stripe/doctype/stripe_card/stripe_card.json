@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "autoname": "prompt",
+ "creation": "2025-09-03 15:02:06.928304",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "brand",
+  "country",
+  "customer",
+  "column_break_pymp",
+  "funding",
+  "expiry_year",
+  "expiry_month",
+  "address_section",
+  "address_city",
+  "address_postal_code",
+  "column_break_gswr",
+  "address_state",
+  "address_country",
+  "checks_section",
+  "cvc_check",
+  "column_break_wyvs",
+  "address_line_1_check",
+  "address_postal_code_check",
+  "raw_section",
+  "payload"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Brand",
+   "options": "American Express\nCartes Bancaires\nDiners Club\nDiscover\nEFTPOS Australia\nInterac\nJCB\nMastercard\nUnion Pay\nVisa\nOther\nNew",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Country",
+   "options": "Country",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "expiry_month",
+   "fieldtype": "Int",
+   "label": "Expiry Month",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry_year",
+   "fieldtype": "Int",
+   "label": "Expiry Year",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "checks_section",
+   "fieldtype": "Section Break",
+   "label": "Checks"
+  },
+  {
+   "fieldname": "address_line_1_check",
+   "fieldtype": "Select",
+   "label": "Address Line 1 Check",
+   "options": "Pass\nFail\nUnavailable\nUnchecked",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "address_postal_code_check",
+   "fieldtype": "Select",
+   "label": "Address Postal Code Check",
+   "options": "Pass\nFail\nUnavailable\nUnchecked",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "cvc_check",
+   "fieldtype": "Select",
+   "label": "CVC Check",
+   "options": "Pass\nFail\nUnavailable\nUnchecked",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "funding",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Funding",
+   "options": "Credit\nDebit\nPrepaid\nUnknown",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_pymp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "address_city",
+   "fieldtype": "Data",
+   "label": "Address City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_postal_code",
+   "fieldtype": "Data",
+   "label": "Address Postal Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_gswr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address_state",
+   "fieldtype": "Data",
+   "label": "Address State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "address_country",
+   "fieldtype": "Link",
+   "label": "Address Country",
+   "options": "Country",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_wyvs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "raw_section",
+   "fieldtype": "Section Break",
+   "label": "Raw"
+  },
+  {
+   "fieldname": "payload",
+   "fieldtype": "Long Text",
+   "label": "Payload",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-22 12:39:42.934415",
+ "modified_by": "Administrator",
+ "module": "Stripe",
+ "name": "Stripe Card",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
