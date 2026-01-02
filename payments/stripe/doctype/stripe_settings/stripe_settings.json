@@ -5,20 +5,45 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "api_key"
+  "api_key",
+  "pagination_section",
+  "limit",
+  "column_break_vykq",
+  "max_pages"
  ],
  "fields": [
   {
    "fieldname": "api_key",
    "fieldtype": "Password",
    "label": "API Key"
+  },
+  {
+   "fieldname": "pagination_section",
+   "fieldtype": "Section Break",
+   "label": "Pagination"
+  },
+  {
+   "default": "100",
+   "fieldname": "limit",
+   "fieldtype": "Int",
+   "label": "Limit"
+  },
+  {
+   "fieldname": "column_break_vykq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "5",
+   "fieldname": "max_pages",
+   "fieldtype": "Int",
+   "label": "Max Pages"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-09-03 14:00:25.109078",
+ "modified": "2026-01-02 13:33:41.463520",
  "modified_by": "Administrator",
  "module": "Stripe",
  "name": "Stripe Settings",

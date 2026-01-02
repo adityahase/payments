@@ -7,18 +7,20 @@ from datetime import datetime, timezone
 import frappe
 from frappe.utils import convert_utc_to_system_timezone
 
-MAX_PAGES = 10
-PAGINATION_LIMIT = 100
-MAX_LIMIT = MAX_PAGES * PAGINATION_LIMIT
-
 
 class StripeHelper:
 	stripe_name_field = "name"  # Default field to map with Stripe ID
 	document_name_field = "id"  # Stripe field to map with Document name
 
 	@classmethod
+	def settings(cls):
+		return frappe.get_doc("Stripe Settings")
+
+	@classmethod
 	def stripe(cls):
-		return frappe.get_doc("Stripe Settings").get_stripe()
+		if frappe.flags.in_install:
+			return frappe._dict()
+		return cls.settings().get_stripe()
 
 	@classmethod
 	def front_fill(cls):
@@ -28,7 +30,7 @@ class StripeHelper:
 				cls.doctype, order_by="creation DESC", limit=1, pluck=cls.stripe_name_field
 			)[0]
 			print("Ending Before", frappe.get_all(cls.doctype, {"name": ending_before}, ["name", "creation"]))
-			list = cls.stripe_object.list(limit=PAGINATION_LIMIT, ending_before=ending_before)
+			list = cls.stripe_object.list(limit=cls.settings().limit, ending_before=ending_before)
 			cls._fill(list.auto_paging_iter())
 		else:
 			print("No existing entries found. Skipping front fill.")
@@ -44,11 +46,13 @@ class StripeHelper:
 		else:
 			starting_after = None
 		print("Starting After", frappe.get_all(cls.doctype, {"name": starting_after}, ["name", "creation"]))
-		list = cls.stripe_object.list(limit=PAGINATION_LIMIT, starting_after=starting_after)
+		list = cls.stripe_object.list(limit=cls.settings().limit, starting_after=starting_after)
 		cls._fill(list.auto_paging_iter())
 
 	@classmethod
 	def _fill(cls, iterator):
+		settings = cls.settings()
+		max_limit = settings.limit * settings.max_pages
 		for index, entry in enumerate(iterator):
 			try:
 				if frappe.db.exists(cls.doctype, entry.get(cls.document_name_field)):
@@ -64,13 +68,13 @@ class StripeHelper:
 				print(f"Error inserting {cls.doctype} - {index} - {entry.get(cls.document_name_field)}", e)
 				raise
 
-			if index >= MAX_LIMIT - 1:
-				print(f"Reached max limit of {MAX_LIMIT}. Stopping.")
+			if index >= max_limit - 1:
+				print(f"Reached max limit of {max_limit}. Stopping.")
 				break
 
 	@classmethod
 	def fill_everything(cls, **kwargs):
-		list = cls.stripe_object.list(limit=PAGINATION_LIMIT, **kwargs)
+		list = cls.stripe_object.list(limit=cls.settings().limit, **kwargs)
 		cls._fill(list.auto_paging_iter())
 
 	def _get_system_time_from_timestamp(self, timestamp):
