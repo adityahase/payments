@@ -1,7 +1,10 @@
 # Copyright (c) 2025, Frappe and contributors
 # For license information, please see license.txt
 
+from datetime import datetime, timezone
+
 import frappe
+from frappe.utils import convert_utc_to_system_timezone
 
 MAX_PAGES = 10
 PAGINATION_LIMIT = 100
@@ -63,3 +66,16 @@ class StripeHelper:
 			if index >= MAX_LIMIT - 1:
 				print(f"Reached max limit of {MAX_LIMIT}. Stopping.")
 				break
+
+	def _get_system_time_from_timestamp(self, timestamp):
+		utc = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+		return convert_utc_to_system_timezone(utc)
+
+	def update_creation(self, timestamp):
+		creation_system = self._get_system_time_from_timestamp(timestamp)
+		frappe.db.set_value(
+			self.doctype,
+			self.name,
+			{"creation": creation_system, "modified": creation_system},
+			update_modified=False,
+		)
