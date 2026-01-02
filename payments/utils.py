@@ -1,6 +1,7 @@
 # Copyright (c) 2025, Frappe and contributors
 # For license information, please see license.txt
 
+import json
 from datetime import datetime, timezone
 
 import frappe
@@ -79,3 +80,15 @@ class StripeHelper:
 			{"creation": creation_system, "modified": creation_system},
 			update_modified=False,
 		)
+
+	@classmethod
+	def serialize(cls, object):
+		return json.dumps(object, default=str, indent=4)
+
+
+def unscrub(str):
+	return frappe.unscrub(str or "")
+
+
+def get_country(code):
+	return frappe.db.get_value("Country", {"code": (code or "").lower()})
