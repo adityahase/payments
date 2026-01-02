@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "autoname": "prompt",
+ "creation": "2025-09-05 11:12:50.013824",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "invoice_payment",
+  "column_break_kjpm",
+  "type",
+  "payment_intent",
+  "charge",
+  "raw_section",
+  "payload"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nPaid\nCanceled",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_kjpm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "raw_section",
+   "fieldtype": "Section Break",
+   "label": "Raw"
+  },
+  {
+   "fieldname": "payload",
+   "fieldtype": "Long Text",
+   "label": "Payload",
+   "read_only": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Type",
+   "options": "Charge\nPayment Intent",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "payment_intent",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Intent",
+   "options": "Stripe Payment Intent",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "charge",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Charge",
+   "options": "Stripe Charge",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "invoice_payment",
+   "fieldtype": "Data",
+   "label": "Invoice Payment",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-05 16:29:40.525848",
+ "modified_by": "Administrator",
+ "module": "Stripe",
+ "name": "Stripe Invoice",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_preview_popup": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
