@@ -1,15 +1,18 @@
 # Copyright (c) 2025, Frappe and contributors
 # For license information, please see license.txt
+import frappe
 
 
 def back_fill():
-	print("back_fill")
-	pass
+	from payments.stripe.doctype.stripe_charge.stripe_charge import StripeCharge
+
+	StripeCharge.back_fill()
 
 
 def front_fill():
-	print("front_fill")
-	pass
+	from payments.stripe.doctype.stripe_charge.stripe_charge import StripeCharge
+
+	StripeCharge.front_fill()
 
 
 def fill():
@@ -18,4 +21,4 @@ def fill():
 
 
 def cleanup():
-	pass
+	frappe.db.delete("Stripe Charge")
