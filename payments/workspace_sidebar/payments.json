@@ -1,0 +1,14 @@
+{
+ "app": "payments",
+ "creation": "2026-01-02 14:39:25.963960",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "banknote-arrow-down",
+ "idx": 0,
+ "items": [],
+ "modified": "2026-01-02 14:39:25.963960",
+ "modified_by": "Administrator",
+ "name": "Payments",
+ "owner": "Administrator",
+ "title": "Payments"
+}

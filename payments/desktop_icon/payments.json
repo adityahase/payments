@@ -1,0 +1,23 @@
+{
+ "app": "payments",
+ "creation": "2026-01-02 14:40:10.851387",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "banknote-arrow-down",
+ "icon_type": "Folder",
+ "idx": 0,
+ "label": "Payments",
+ "link_to": "Payments",
+ "link_type": "Workspace",
+ "modified": "2026-01-02 14:40:26.615682",
+ "modified_by": "Administrator",
+ "name": "Payments",
+ "owner": "Administrator",
+ "roles": [
+  {
+   "role": "Administrator"
+  }
+ ],
+ "standard": 1
+}
