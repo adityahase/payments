@@ -1,0 +1,54 @@
+{
+ "app": "payments",
+ "charts": [
+  {
+   "chart_name": "Revenue - USD",
+   "label": "Revenue - USD"
+  },
+  {
+   "chart_name": "Revenue - INR",
+   "label": "Revenue - INR"
+  }
+ ],
+ "content": "[{\"id\":\"w4KwhRn5kz\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Payments</b></span>\",\"col\":12}},{\"id\":\"ItKOPL5G-o\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Invoices\",\"col\":4}},{\"id\":\"ROdr6aZpbY\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Charges\",\"col\":4}},{\"id\":\"UJrgowm3jh\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Cards\",\"col\":4}},{\"id\":\"6aCx7F8CBt\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Revenue - USD\",\"col\":12}},{\"id\":\"0dvbSt6PZe\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Revenue - INR\",\"col\":12}}]",
+ "creation": "2026-01-02 14:06:53.861739",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "banknote-arrow-down",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Payments",
+ "link_type": "DocType",
+ "links": [],
+ "modified": "2026-01-02 14:15:42.816250",
+ "modified_by": "Administrator",
+ "module": "Payments Database",
+ "name": "Payments",
+ "number_cards": [
+  {
+   "label": "Invoices",
+   "number_card_name": "Invoices"
+  },
+  {
+   "label": "Charges",
+   "number_card_name": "Charges"
+  },
+  {
+   "label": "Cards",
+   "number_card_name": "Cards"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [],
+ "title": "Payments",
+ "type": "Workspace"
+}
