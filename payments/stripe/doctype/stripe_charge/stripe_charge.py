@@ -14,10 +14,14 @@ class StripeCharge(Document, StripeHelper):
 
 	@classmethod
 	def create(cls, charge):
+		comment = None
 		if charge.payment_method and not frappe.db.exists("Stripe Card", charge.payment_method):
 			# This is going to create more requests
 			# But, there are no way to bulk fetch PaymentMethods
-			StripeCard.fill_everything(customer=charge.customer)
+			try:
+				StripeCard.fill_everything(customer=charge.customer)
+			except Exception:
+				comment = frappe.get_traceback(with_context=True)
 
 		doc_dict = {
 			"doctype": "Stripe Charge",
@@ -48,3 +52,5 @@ class StripeCharge(Document, StripeHelper):
 			doc_dict,
 		).insert(ignore_links=True)  # We cannot fetch all linked PaymentIntent without breaking backfill
 		doc.update_creation(charge.created)
+		if comment:
+			doc.add_comment("Comment", f"<pre>{comment}</pre>")
