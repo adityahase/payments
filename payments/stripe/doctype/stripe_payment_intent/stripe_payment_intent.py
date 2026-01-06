@@ -24,5 +24,5 @@ class StripePaymentIntent(Document, StripeHelper):
 				"currency": intent.currency.upper(),
 				"payload": cls.serialize(intent),
 			}
-		).insert(ignore_links=True)
+		).insert(ignore_links=True, ignore_mandatory=True)
 		doc.update_creation(intent.created)
