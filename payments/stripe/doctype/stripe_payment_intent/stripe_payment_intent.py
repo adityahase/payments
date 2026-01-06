@@ -18,11 +18,11 @@ class StripePaymentIntent(Document, StripeHelper):
 				"doctype": "Stripe Payment Intent",
 				"name": intent.id,
 				"status": unscrub(intent.status),
-				"customer": intent.customer,
+				"customer": intent.customer,  # Customer might be None for older records
 				"amount": intent.amount / 100,
 				"description": intent.description,
 				"currency": intent.currency.upper(),
 				"payload": cls.serialize(intent),
 			}
-		).insert()
+		).insert(ignore_links=True)
 		doc.update_creation(intent.created)
